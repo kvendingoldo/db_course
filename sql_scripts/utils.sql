@@ -1,0 +1,1 @@
+DROP SCHEMA hotel CASCADE;
