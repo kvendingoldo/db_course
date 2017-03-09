@@ -1,0 +1,3 @@
+{
+  "db": "postgresql://asharov:test@10.10.0.1:5432/hotel"
+}
