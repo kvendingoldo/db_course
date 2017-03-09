@@ -1,3 +1,3 @@
 CREATE VIEW myview AS
-    SELECT id
-        FROM clients
+  SELECT id
+  FROM clients
