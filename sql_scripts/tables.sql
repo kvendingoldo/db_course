@@ -3,17 +3,22 @@ CREATE TABLE citizenship (
   citizenship VARCHAR(63)
 );
 
-CREATE TABLE person (
-  first_name       VARCHAR(255) NOT NULL,
-  last_name        VARCHAR(255) NOT NULL,
-  middle_name      VARCHAR(255),
-  sex              SEX,
-  age              INTEGER      NOT NULL CONSTRAINT positive_person_age CHECK (age > 0),
-  birthday         DATE         NOT NULL,
-  citizenship      INTEGER,
+CREATE TABLE pasport (
+  id               INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_pasport'),
   passport_series  VARCHAR(4),
-  passport_id      VARCHAR(25)  NOT NULL,
+  passport_id      VARCHAR(25)                NOT NULL,
   data_on_passport DATE
+);
+
+CREATE TABLE person (
+  first_name  VARCHAR(255) NOT NULL,
+  last_name   VARCHAR(255) NOT NULL,
+  middle_name VARCHAR(255),
+  sex         SEX,
+  age         INTEGER      NOT NULL CONSTRAINT positive_person_age CHECK (age > 0),
+  birthday    DATE         NOT NULL,
+  citizenship INTEGER,
+  pasport     INTEGER
 );
 
 CREATE TABLE companies (
@@ -45,7 +50,8 @@ CREATE TABLE client_profiles (
 
   FOREIGN KEY (client) REFERENCES clients (id) ON DELETE CASCADE,
   FOREIGN KEY (company) REFERENCES companies (id) ON DELETE CASCADE,
-  FOREIGN KEY (citizenship) REFERENCES citizenship (id) ON DELETE CASCADE
+  FOREIGN KEY (citizenship) REFERENCES citizenship (id) ON DELETE CASCADE,
+  FOREIGN KEY (pasport) REFERENCES pasport (id) ON DELETE CASCADE
 
 )
   INHERITS (person);
@@ -107,7 +113,8 @@ CREATE TABLE employee_profiles (
   FOREIGN KEY (schedule) REFERENCES employers_schedule (id) ON DELETE CASCADE,
   FOREIGN KEY (employee) REFERENCES employers (id) ON DELETE CASCADE,
   FOREIGN KEY (education) REFERENCES education (id) ON DELETE CASCADE,
-  FOREIGN KEY (citizenship) REFERENCES citizenship (id) ON DELETE CASCADE
+  FOREIGN KEY (citizenship) REFERENCES citizenship (id) ON DELETE CASCADE,
+  FOREIGN KEY (pasport) REFERENCES pasport (id) ON DELETE CASCADE
 
 )
   INHERITS (person);

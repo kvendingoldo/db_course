@@ -1,3 +1,4 @@
+CREATE SEQUENCE auto_id_pasport;
 CREATE SEQUENCE auto_id_clients;
 CREATE SEQUENCE auto_id_citizenship;
 CREATE SEQUENCE auto_id_client_profiles;
