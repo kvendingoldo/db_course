@@ -1,4 +1,5 @@
-CREATE SEQUENCE auto_id_pasport;
+CREATE SEQUENCE auto_id_person;
+CREATE SEQUENCE auto_id_passport;
 CREATE SEQUENCE auto_id_clients;
 CREATE SEQUENCE auto_id_citizenship;
 CREATE SEQUENCE auto_id_client_profiles;
@@ -22,3 +23,4 @@ CREATE SEQUENCE auto_id_room_types;
 CREATE SEQUENCE auto_id_rooms;
 CREATE SEQUENCE auto_id_room_reservations;
 CREATE SEQUENCE auto_id_room_orders;
+CREATE SEQUENCE auto_id_phones_relative;
