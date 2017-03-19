@@ -1,6 +1,6 @@
 CREATE TABLE citizenship (
   id          INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_citizenship'),
-  citizenship VARCHAR(63) UNIQUE NOT NULL
+  citizenship VARCHAR(63) UNIQUE         NOT NULL
 );
 
 CREATE TABLE buff_citiz_person (
@@ -14,7 +14,7 @@ CREATE TABLE passport (
   id               INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_passport'),
   passport_series  VARCHAR(10),
   passport_id      VARCHAR(25)                NOT NULL,
-  data_on_passport DATE NOT NULL
+  data_on_passport DATE                       NOT NULL
 );
 
 CREATE TABLE person (
@@ -22,11 +22,11 @@ CREATE TABLE person (
   first_name     VARCHAR(63)                NOT NULL,
   last_name      VARCHAR(63)                NOT NULL,
   middle_name    VARCHAR(63),
-  sex            SEX NOT NULL ,
+  sex            SEX                        NOT NULL,
   birthday       DATE                       NOT NULL,
-  passport       INTEGER NOT NULL,
+  passport       INTEGER                    NOT NULL,
   marital_status MARITAL_STATUS,
-  children       BOOLEAN DEFAULT FALSE,
+  children       BOOLEAN                             DEFAULT FALSE,
 
   FOREIGN KEY (id) REFERENCES buff_citiz_person (person_id) ON DELETE CASCADE,
   FOREIGN KEY (passport) REFERENCES passport (id) ON DELETE CASCADE
@@ -42,7 +42,7 @@ CREATE TABLE companies (
 
 CREATE TABLE company_phones (
   id      INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_company_phones'),
-  company INTEGER NOT NULL ,
+  company INTEGER                    NOT NULL,
   phone   VARCHAR(12),
 
   FOREIGN KEY (company) REFERENCES companies (id) ON DELETE CASCADE
@@ -60,7 +60,7 @@ CREATE TABLE person_phones (
 
 CREATE TABLE clients (
   id    INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_clients'),
-  login VARCHAR(255) UNIQUE NOT NULL
+  login VARCHAR(255) UNIQUE        NOT NULL
 );
 
 CREATE TABLE buff_client_company (
@@ -71,15 +71,15 @@ CREATE TABLE buff_client_company (
 );
 
 CREATE TABLE client_profiles (
-  id     INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_client_profiles'),
-  client INTEGER,
-  status CLIENT_STATUS,
-  person INTEGER,
+  id      INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_client_profiles'),
+  client  INTEGER,
+  status  CLIENT_STATUS                       DEFAULT 'standart',
+  person  INTEGER,
   company INTEGER,
 
   FOREIGN KEY (company) REFERENCES buff_client_company (client_id) ON DELETE CASCADE,
   FOREIGN KEY (client) REFERENCES clients (id) ON DELETE CASCADE,
-  FOREIGN KEY (id) REFERENCES buff_citiz_person (person_id)  ON DELETE CASCADE,
+  FOREIGN KEY (id) REFERENCES buff_citiz_person (person_id) ON DELETE CASCADE,
   FOREIGN KEY (person) REFERENCES person (id) ON DELETE CASCADE
 );
 
@@ -106,7 +106,7 @@ CREATE TABLE client_payment_methods (
 
 CREATE TABLE employers (
   id    INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_employers'),
-  login VARCHAR(255) UNIQUE NOT NULL
+  login VARCHAR(255) UNIQUE        NOT NULL
 );
 
 CREATE TABLE education (
@@ -115,8 +115,8 @@ CREATE TABLE education (
 );
 
 CREATE TABLE employers_schedule (
-  id          INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_employers_schedule'),
-  description TEXT
+  id                   INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_employers_schedule'),
+  schedule_description TEXT
 );
 
 CREATE TABLE buff_empl_edu (
@@ -132,8 +132,8 @@ CREATE TABLE employee_profiles (
   employee   INTEGER,
   ppc        INTEGER                    NOT NULL CONSTRAINT positive_client_ppc CHECK (ppc > 0),
   inn        INTEGER                    NOT NULL CONSTRAINT positive_client_inn CHECK (inn > 0),
-  experience SMALLINT DEFAULT 0,
-  salary     REAL CONSTRAINT positive_salary CHECK (salary > 0),
+  experience SMALLINT                            DEFAULT 0,
+  salary     REAL                                DEFAULT 0 CONSTRAINT positive_salary CHECK (salary => 0),
   schedule   INTEGER,
 
   FOREIGN KEY (schedule) REFERENCES employers_schedule (id) ON DELETE CASCADE,
@@ -144,7 +144,7 @@ CREATE TABLE employee_profiles (
 
 CREATE TABLE positions (
   id    INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_positions'),
-  title VARCHAR(255) UNIQUE NOT NULL
+  title VARCHAR(255) UNIQUE        NOT NULL
 );
 
 CREATE TABLE employee_positions (
@@ -159,21 +159,21 @@ CREATE TABLE employee_positions (
 
 CREATE TABLE service_types (
   id          INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_service_types'),
-  title       VARCHAR(255) UNIQUE NOT NULL,
+  title       VARCHAR(255) UNIQUE        NOT NULL,
   description TEXT
 );
 
 CREATE TABLE service_price (
   id      INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_service_price'),
-  service INTEGER UNIQUE NOT NULL,
-  price   REAL NOT NULL DEFAULT 0.0,
+  service INTEGER UNIQUE             NOT NULL,
+  price   REAL                       NOT NULL DEFAULT 0.0,
 
   FOREIGN KEY (service) REFERENCES service_types (id) ON DELETE CASCADE
 );
 
 CREATE TABLE invoices (
   id             INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_invoices'),
-  payment_method INTEGER NOT NULL,
+  payment_method INTEGER                    NOT NULL,
   invoice        REAL,
   status         INTEGER,
 
@@ -207,7 +207,7 @@ CREATE TABLE rooms (
   room   VARCHAR(255) UNIQUE,
   floor  SMALLINT,
   type   INTEGER,
-  status BOOLEAN NOT NULL DEFAULT TRUE,
+  status BOOLEAN                    NOT NULL DEFAULT TRUE,
 
   FOREIGN KEY (type) REFERENCES room_types (id) ON DELETE CASCADE
 );
@@ -219,7 +219,7 @@ CREATE TABLE room_reservations (
   room       INTEGER,
   start_date DATE,
   end_data   DATE CHECK (end_data > room_reservations.start_date),
-  prepaid    BOOLEAN NOT NULL DEFAULT FALSE,
+  prepaid    BOOLEAN                    NOT NULL DEFAULT FALSE,
   invoice    INTEGER UNIQUE,
 
   FOREIGN KEY (client) REFERENCES clients (id) ON DELETE CASCADE,
