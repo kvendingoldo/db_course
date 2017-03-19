@@ -1,6 +1,6 @@
 CREATE TABLE citizenship (
   id          INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_citizenship'),
-  citizenship VARCHAR(63)
+  citizenship VARCHAR(63) UNIQUE NOT NULL
 );
 
 CREATE TABLE buff_citiz_person (
@@ -12,7 +12,7 @@ CREATE TABLE buff_citiz_person (
 
 CREATE TABLE passport (
   id               INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_passport'),
-  passport_series  VARCHAR(4),
+  passport_series  VARCHAR(10),
   passport_id      VARCHAR(25)                NOT NULL,
   data_on_passport DATE NOT NULL
 );
@@ -22,7 +22,7 @@ CREATE TABLE person (
   first_name     VARCHAR(63)                NOT NULL,
   last_name      VARCHAR(63)                NOT NULL,
   middle_name    VARCHAR(63),
-  sex            SEX,
+  sex            SEX NOT NULL ,
   birthday       DATE                       NOT NULL,
   passport       INTEGER NOT NULL,
   marital_status MARITAL_STATUS,
@@ -42,7 +42,7 @@ CREATE TABLE companies (
 
 CREATE TABLE company_phones (
   id      INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_company_phones'),
-  company INTEGER,
+  company INTEGER NOT NULL ,
   phone   VARCHAR(12),
 
   FOREIGN KEY (company) REFERENCES companies (id) ON DELETE CASCADE
@@ -60,7 +60,7 @@ CREATE TABLE person_phones (
 
 CREATE TABLE clients (
   id    INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_clients'),
-  login VARCHAR(255) UNIQUE
+  login VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE buff_client_company (
@@ -75,8 +75,10 @@ CREATE TABLE client_profiles (
   client INTEGER,
   status CLIENT_STATUS,
   person INTEGER,
+  company INTEGER,
 
-  FOREIGN KEY (client) REFERENCES buff_client_company (client_id) ON DELETE CASCADE,
+  FOREIGN KEY (company) REFERENCES buff_client_company (client_id) ON DELETE CASCADE,
+  FOREIGN KEY (client) REFERENCES clients (id) ON DELETE CASCADE,
   FOREIGN KEY (id) REFERENCES buff_citiz_person (person_id)  ON DELETE CASCADE,
   FOREIGN KEY (person) REFERENCES person (id) ON DELETE CASCADE
 );
@@ -104,7 +106,7 @@ CREATE TABLE client_payment_methods (
 
 CREATE TABLE employers (
   id    INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_employers'),
-  login VARCHAR(255)
+  login VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE education (
@@ -164,7 +166,7 @@ CREATE TABLE service_types (
 CREATE TABLE service_price (
   id      INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_service_price'),
   service INTEGER UNIQUE NOT NULL,
-  price   REAL NOT NULL DEFAULT 0,
+  price   REAL NOT NULL DEFAULT 0.0,
 
   FOREIGN KEY (service) REFERENCES service_types (id) ON DELETE CASCADE
 );
@@ -217,7 +219,7 @@ CREATE TABLE room_reservations (
   room       INTEGER,
   start_date DATE,
   end_data   DATE CHECK (end_data > room_reservations.start_date),
-  prepaid    BOOLEAN NOT NULL DEFAULT false,
+  prepaid    BOOLEAN NOT NULL DEFAULT FALSE,
   invoice    INTEGER UNIQUE,
 
   FOREIGN KEY (client) REFERENCES clients (id) ON DELETE CASCADE,

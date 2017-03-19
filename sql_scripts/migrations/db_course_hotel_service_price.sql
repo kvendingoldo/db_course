@@ -1,0 +1,12 @@
+INSERT INTO hotel.service_price (id, service, price) VALUES (1, 1, 5);
+INSERT INTO hotel.service_price (id, service, price) VALUES (2, 2, 10);
+INSERT INTO hotel.service_price (id, service, price) VALUES (3, 3, 30);
+INSERT INTO hotel.service_price (id, service, price) VALUES (4, 4, 10);
+INSERT INTO hotel.service_price (id, service, price) VALUES (5, 5, 5);
+INSERT INTO hotel.service_price (id, service, price) VALUES (6, 6, 5);
+INSERT INTO hotel.service_price (id, service, price) VALUES (8, 8, 1);
+INSERT INTO hotel.service_price (id, service, price) VALUES (9, 9, 15);
+INSERT INTO hotel.service_price (id, service, price) VALUES (10, 10, 15);
+INSERT INTO hotel.service_price (id, service, price) VALUES (11, 11, 0);
+INSERT INTO hotel.service_price (id, service, price) VALUES (12, 12, 10);
+INSERT INTO hotel.service_price (id, service, price) VALUES (7, 7, 0);

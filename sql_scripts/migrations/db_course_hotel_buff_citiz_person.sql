@@ -1,0 +1,12 @@
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (1, 1);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (2, 2);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (3, 4);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (4, 3);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (5, 5);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (6, 2);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (7, 8);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (8, 1);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (9, 2);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (10, 3);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (11, 2);
+INSERT INTO hotel.buff_citiz_person (person_id, citizenship) VALUES (12, 1);
