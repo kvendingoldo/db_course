@@ -1,0 +1,14 @@
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (1, '1', 1, 1, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (2, '2', 1, 1, true);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (5, '5', 2, 1, true);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (8, '8', 2, 1, true);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (10, '10', 3, 2, true);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (12, '101', 10, 3, true);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (13, '102', 10, 3, true);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (3, '3', 1, 1, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (4, '4', 1, 1, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (6, '6', 2, 1, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (7, '7', 2, 1, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (9, '9', 3, 2, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (11, '11', 3, 2, false);
+INSERT INTO hotel.rooms (id, room, floor, type, status) VALUES (14, '103', 10, 3, false);

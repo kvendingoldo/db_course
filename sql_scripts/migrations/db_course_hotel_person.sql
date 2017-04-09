@@ -7,5 +7,10 @@ INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday,
 INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (7, 'Summer', 'Grov', null, 'female', '1994-09-17', 3, 'unmarried', false);
 INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (8, 'Natalya', 'Strelnikova', 'Borisovna', 'female', '1984-02-19', 4, 'married', true);
 INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (9, 'Rob', 'Raus', null, 'male', '1974-09-17', 5, 'unmarried', false);
-INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (10, 'Boris', 'Strelnikov', 'Pavlovich', 'male', '2000-01-02', 11, 'married', true);
 INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (11, 'Tanya', 'Zagorodskay', 'Gregorieva', 'female', '1971-10-07', 6, 'unmarried', false);
+INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (10, 'Boris', 'Strelnikov', 'Pavlovich', 'male', '1988-01-02', 11, 'married', true);
+INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (14, 'John', 'Gramm', null, 'male', '1980-03-18', 12, 'unmarried', false);
+INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (15, 'Raimon', 'Jis', null, 'male', '1979-11-04', 13, 'unmarried', false);
+INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (16, 'Ray', 'Klaymon', null, 'male', '1991-10-26', 14, 'married', true);
+INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (17, 'Bobby', 'Doo', null, 'male', '1972-06-06', 15, 'married', true);
+INSERT INTO hotel.person (id, first_name, last_name, middle_name, sex, birthday, passport, marital_status, children) VALUES (13, 'Sara', 'Kott', null, 'female', '1992-03-31', 16, 'married', true);
