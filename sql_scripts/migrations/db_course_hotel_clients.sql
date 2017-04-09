@@ -1,0 +1,11 @@
+INSERT INTO hotel.clients (id, login) VALUES (1, 'alex_nabb_1960');
+INSERT INTO hotel.clients (id, login) VALUES (2, 'alyona_petrova_1992');
+INSERT INTO hotel.clients (id, login) VALUES (3, 'poll_sanders_1956');
+INSERT INTO hotel.clients (id, login) VALUES (4, 'john_parker_1968');
+INSERT INTO hotel.clients (id, login) VALUES (5, 'lea_horrm_1940');
+INSERT INTO hotel.clients (id, login) VALUES (6, 'summer_grov_1994');
+INSERT INTO hotel.clients (id, login) VALUES (7, 'natalya_strelnikova_1984');
+INSERT INTO hotel.clients (id, login) VALUES (8, 'rob_raus_1974');
+INSERT INTO hotel.clients (id, login) VALUES (9, 'boris_strelnikov_2000');
+INSERT INTO hotel.clients (id, login) VALUES (10, 'tanya_zagorodskay_1971');
+INSERT INTO hotel.clients (id, login) VALUES (11, 'dee_seelt_1930');
