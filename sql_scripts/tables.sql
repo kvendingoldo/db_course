@@ -12,7 +12,7 @@ CREATE TABLE p_passport (
   id               INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_p_passport'),
   passport_series  VARCHAR(10),
   passport_id      VARCHAR(25)                NOT NULL,
-  data_on_passport DATE                       NOT NULL
+  date_on_passport DATE                       NOT NULL
 );
 
 CREATE TABLE person (
@@ -44,7 +44,8 @@ CREATE TABLE p_phones (
 
 CREATE TABLE p_education (
   id    INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_p_education'),
-  title TEXT UNIQUE
+  title TEXT UNIQUE,
+  type  EDU_TYPE
 );
 
 CREATE TABLE b_person_edu (
@@ -144,7 +145,7 @@ CREATE TABLE e_position (
 CREATE TABLE b_employee_position (
   employee_id INTEGER REFERENCES employers (id) ON UPDATE CASCADE ON DELETE CASCADE,
   position_id INTEGER REFERENCES e_position (id) ON UPDATE CASCADE ON DELETE CASCADE,
-  quantifier REAL
+  quantifier REAL DEFAULT 1
 );
 
 
@@ -169,8 +170,8 @@ CREATE TABLE service_price (
 
 CREATE TABLE payment_method_types (
   id       INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_payment_method_types'),
-  type     VARCHAR(255) UNIQUE        NOT NULL,
-  provider VARCHAR(255)
+  type     VARCHAR(255) UNIQUE        NOT NULL
+  --provider VARCHAR(255)
 );
 
 CREATE TABLE payment_status (
@@ -218,7 +219,7 @@ CREATE TABLE orders (
 
 CREATE TABLE r_types (
   id     INTEGER PRIMARY KEY UNIQUE NOT NULL DEFAULT nextval('auto_id_r_types'),
-  type   VARCHAR(255) UNIQUE,
+  type   VARCHAR(255),
   season SEASON,
   price  MONEY
 );
@@ -239,7 +240,7 @@ CREATE TABLE r_reservations (
   employee   INTEGER,
   room       INTEGER,
   start_date DATE,
-  end_data   DATE CHECK (end_data > r_reservations.start_date),
+  end_date   DATE CHECK (end_date > r_reservations.start_date),
   prepaid    BOOLEAN                    NOT NULL DEFAULT FALSE,
   invoice    INTEGER UNIQUE,
 
