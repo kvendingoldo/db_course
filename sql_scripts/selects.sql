@@ -149,7 +149,7 @@ SELECT
   last_name,
   room,
   start_date,
-  end_data,
+  end_date,
   prepaid
 FROM r_reservations
   INNER JOIN c_profiles ON c_profiles.id = r_reservations.client
@@ -210,3 +210,17 @@ FROM invoices
   INNER JOIN payment_method_types ON payment_method_types.id = c_payment_methods.type
   INNER JOIN person ON person.id = client
 WHERE payment_method_types.type = 'VISA' OR payment_method_types.type = 'MASTERCARD';
+
+-- вывести клиента который наиболее часто селился
+
+SELECT clients.login
+FROM (
+
+       SELECT
+         client,
+         COUNT(client)
+       FROM r_reservations
+       GROUP BY client
+       ORDER BY client ASC
+       LIMIT 1) AS tmp
+  INNER JOIN clients ON clients.id = client;
